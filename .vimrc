@@ -25,7 +25,7 @@ Plug 'junegunn/vim-easy-align'
 "" space + go -> exec script
 Plug 'thinca/vim-quickrun'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-"" gcc -> comment
+"" gc -> comment
 Plug 'tpope/vim-commentary'
 "" option bar
 Plug 'vim-airline/vim-airline'
@@ -55,6 +55,10 @@ Plug 'davidhalter/jedi-vim'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 "" space + sh -> vimshell
 Plug 'Shougo/vimshell.vim'
+
+Plug 'plasticboy/vim-markdown'
+Plug 'kannokanno/previm'
+Plug 'tyru/open-browser.vim'
 call plug#end()
 filetype plugin indent on
 let mapleader="\<Space>"
@@ -169,6 +173,16 @@ else
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
 endif
+
+ """ markdown {{{
+   autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
+   autocmd BufRead,BufNewFile *.md  set filetype=markdown
+   " Need: kannokanno/previm
+   nnoremap <silent> <C-p> :PrevimOpen<CR> " Ctrl-pでプレビュー
+   " 自動で折りたたまないようにする
+   let g:vim_markdown_folding_disabled=1
+   let g:previm_enable_realtime = 1
+ " }}}
 
 " function
 "" xaml
